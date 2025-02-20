@@ -3,9 +3,13 @@ const { User } = require('../models');
 // Get all users
 const getUsers = async (req, res) => {
   try {
+    console.log("✅ Fetching all users..."); // Debugging log
     const users = await User.find();
+    console.log("✅ Users fetched:", users); // Debugging log
+
     res.json(users);
   } catch (err) {
+    console.error("❌ Error fetching users:", err); // Debugging log
     res.status(500).json(err);
   }
 };
@@ -29,7 +33,7 @@ const createUser = async (req, res) => {
     const user = await User.create(req.body);
     res.json(user);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ message: 'Error creating user', error: err.message });
   }
 };
 

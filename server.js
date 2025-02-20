@@ -5,11 +5,16 @@ const routes = require('./routes');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Ensure this is correct
+// Debugging logs
+console.log("✅ Server is starting...");
+app.use((req, res, next) => {
+  console.log(`➡️ Received request: ${req.method} ${req.url}`);
+  next();
+});
+
 app.use(routes);
 
 db.once('open', () => {
