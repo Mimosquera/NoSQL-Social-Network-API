@@ -1,4 +1,4 @@
-const { Thought } = require('../models');
+import Thought from '../models/Thought.js';
 
 // Get all thoughts
 const getThoughts = async (req, res) => {
@@ -59,4 +59,4 @@ const deleteThought = async (req, res) => {
   }
 };
 
-module.exports = { getThoughts, getThoughtById, createThought, updateThought, deleteThought };
+export { getThoughts, getThoughtById, createThought, updateThought, deleteThought };

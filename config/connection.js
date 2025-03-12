@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
+import pkg from 'mongoose';
+const { connect, connection } = pkg;
 
-mongoose.connect('mongodb://127.0.0.1:27017/socialNetworkDB');
+connect('mongodb://127.0.0.1:27017/socialNetworkDB');
 
-module.exports = mongoose.connection;
+export default connection;

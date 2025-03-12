@@ -1,6 +1,6 @@
-const express = require('express');
-const db = require('./config/connection');
-const routes = require('./routes');
+import express from 'express';
+import db from './config/connection.js';
+import routes from './routes/index.js';
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -8,7 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Debugging logs
 console.log("✅ Server is starting...");
 app.use((req, res, next) => {
   console.log(`➡️ Received request: ${req.method} ${req.url}`);

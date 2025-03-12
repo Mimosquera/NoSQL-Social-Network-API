@@ -1,15 +1,14 @@
-const { User } = require('../models');
+import User from '../models/User.js';
 
 // Get all users
 const getUsers = async (req, res) => {
+  console.log("✅ getUsers function called");
   try {
-    console.log("✅ Fetching all users..."); // Debugging log
     const users = await User.find();
-    console.log("✅ Users fetched:", users); // Debugging log
-
+    console.log("✅ Users fetched:", users);
     res.json(users);
   } catch (err) {
-    console.error("❌ Error fetching users:", err); // Debugging log
+    console.error("❌ Error fetching users:", err);
     res.status(500).json(err);
   }
 };
@@ -63,4 +62,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUserById, createUser, updateUser, deleteUser };
+export { getUsers, getUserById, createUser, updateUser, deleteUser };
